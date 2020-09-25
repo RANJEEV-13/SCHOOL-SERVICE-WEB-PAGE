@@ -1,0 +1,149 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Register</title>
+	<link rel="icon" type="image/jpg" href="{% static 'images/logo.jpg' %}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href=" {% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="limiter">
+
+		<div class="container-login100">
+
+
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50" align="middle">
+				<img src="{% static 'images/logo.jpg' %}"  height="150" width="150" >
+
+				<form action="accounts/signup" method="POST"  enctype="multipart/form-data" class="login100-form validate-form">
+					{% csrf_token %}
+					<span class="login100-form-title p-b-33">
+						Register Here!!
+					</span>
+
+
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid username  is required">
+						<input class="input100" type="text" name="username" placeholder="username" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<small id="passwordHelpBlock" class="form-text text-muted">
+  Enter your Mobile Number. It will be Your Username.
+</small>
+                    <div class="wrap-input100 validate-input" data-validate = "Valid First  is required">
+						<input class="input100" type="text" name="first_name" placeholder="First Name" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate = "Valid Last  is required">
+						<input class="input100" type="text" name="last_name" placeholder="Last Name" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate = "Valid username  is required">
+						<input class="input100" type="email" name="email" placeholder="Email" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="confirm_password" placeholder=" Confirm Password" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<div class="g-recaptcha" data-sitekey="6LeRCPgUAAAAACelBNa4XDQKQXWrcoHkLrF3FeOV"></div>
+
+
+
+					<div class="container-login100-form-btn m-t-20">
+						<button class="login100-form-btn" type="submit">
+							Register
+						</button>
+					</div>
+					<div>
+						{% for message in messages%}
+						<h5 style="color:red">{{message}}</h5>
+
+						{% endfor%}
+					</div>
+
+					<div class="text-center p-t-45 p-b-4">
+						<span class="txt1">
+							Forgot
+						</span>
+
+						<a href="/accounts/reset_password" class="txt2 hov1">
+							Username / Password?
+						</a>
+					</div>
+
+
+
+					<div class="text-center">
+						<span class="txt1">
+							Want to go to Home
+						</span>
+
+						<a href="/index.html" class="txt2 hov1">
+							Click here!!
+						</a>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/loginJS/main.js' %}"></script>
+ <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</body>
+</html>

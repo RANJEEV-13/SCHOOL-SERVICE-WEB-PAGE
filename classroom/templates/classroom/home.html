@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Welcome to the Study Point Online Test Portal <span class="icon-emo-happy"></span></h2>
+  <p class="lead">
+    If you already have an account, go ahead and <a href="{% url 'login' %}">log in</a>. If you are new to Study Point , get started
+    by creating a <a href="{% url 'student_signup' %}">student account</a> or a <a href="{% url 'teacher_signup' %}">teacher account</a>.
+  </p>
+  <hr>
+  <h3>Online Test Instructions:-</h3>
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><p><strong>Steps For&nbsp;Accessing Your Exam Online:</strong></p>
+
+<ul>
+	<li>Close all Browsers, including email</li>
+
+	<li>Click "Log In " as a student right at the top  of the screen.</li>
+	<li>Enter your  Username and Password provided  click Enter.</li>
+	<li>Do not  press back or refresh button during the test</li>
+</ul>
+
+<p><br />
+<strong>Before starting the exam:</strong></p>
+
+<p>Please verify that the student's Username  appears correctly at the top of the page.</p>
+
+<p><strong>During the exam:</strong></p>
+
+<ul>
+	<li>The student may not use his or her textbook, course notes, or receive help from a proctor&nbsp;or any other outside source.</li>
+
+	<li>Students must not stop the session and then return to it. This is especially important in the online environment where the system will "time-out" and not allow the student or you to reenter the exam site.</li>
+</ul>
+
+<h4><strong>What to do if your online exam is interrupted</strong></h4>
+
+<ul>
+	<li>If your online exam is interrupted, click the “Back” button on your web browser to see if you can return to the exam. If not, follow the instructions below to resume taking the exam. <em>Note: Answers are saved by the system in 10-minute intervals. If you have to log back in to complete your exam, your prior answers will be remain from the last system-save.</em></li>
+	<li>Reconnect to the Internet and log back into Blackboard.</li>
+	<li>Follow your original instructions to access the exam login page.</li>
+
+</ul>
+
+<h4><strong>Minimum Browser Requirements</strong></h4>
+
+<p>Internet Explorer 9, Firefox 1, or Google Chrome are required to log into the exam</p>
+            <p>There should be a good internet Connection during the Test</p>
+
+<h4><strong>Support</strong></h4>
+
+<p>If you have any questions, please contact your concerned faculty.</p>
+</div>
+      </div>
+</div>
+            </div>
+                      </div>
+
+        </div>
+                      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,418 @@
+{% load static%}
+{% static 'images' as baseUrl %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Study Point</title>
+	  <link rel="icon" type="image/jpg" href="{% static 'images/logo.jpg' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css'  %}">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
+      <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+
+
+
+
+
+</head>
+
+<body >
+<<div>
+
+
+    	<div >
+
+
+
+    		<div class="row no-gutters d-flex align-items-center align-items-stretch" >
+
+    			<div class="col-md-4 d-flex align-items-center py-4">
+					<img src="{% static 'images/logo.jpg' %}"  height="120" width="120" >
+
+
+
+
+
+
+    				<a class="navbar-brand" href="index.html" style="font-size:40px;color:black" >Study Point</a>
+    			</div>
+
+	    		<div class="col-lg-8 d-block" >
+
+		    		<div class="row d-flex">
+					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+					    	<div class="icon d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+					    	<div class="text">
+					    		<span>Email</span>
+						    	<span >studypoint.patwatoli@gmail.com</span>
+						    </div>
+					    </div>
+					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+					    	<div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <div class="text">
+						    	<span>Call</span>
+						    	<span>+91 9031 1194 48</span>
+						    </div>
+					    </div>
+
+						<div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+					    	<div class="icon d-flex justify-content-center align-items-center"></div>
+						    <div class="text">
+						    	<span>Download Study Point app</span>
+						    	<span><a href="https://play.google.com/store/apps/details?id=co.thanos.fticg" target="_blank"><img src="{% static  'images/ps.png' %}"> </a></span>
+						    </div>
+
+					    </div>
+
+
+
+					    	<div class="icon d-flex justify-content-center align-items-center"></div>
+						    <div class="text">
+
+						    	<span>{% if user.is_superuser %}
+						<a href="{% url 'teachers:quiz_change_list' %}" class="nav-link" target="_blank">Test Portal</a>
+						{% elif user.is_staff %}
+						<a href="{% url 'students:quiz_list' %}" class="nav-link" target="_blank">Test Portal</a>
+						{% else%}
+						<a href="home.html" class="nav-link" target="_blank" style="color:red">Test Portal</a>
+						{% endif %}</span>
+						    </div>
+
+
+
+
+
+				    	</div>
+								    </div>
+								{% for n in notices%}
+									<marquee behavior="scroll" direction="left"><strong>Notice!!</strong>{{n.description}} </marquee>
+		   						 {% endfor %}
+			</div>
+		  </div>
+    </div>
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container d-flex align-items-center px-4">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <form action="#" class="searchform order-lg-last">
+          <div class="form-group d-flex">
+            <input type="text" class="form-control pl-3" placeholder="Search">
+            <button type="submit" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
+          </div>
+        </form>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item active"><a href="index.html" class="nav-link pl-0">Home</a></li>
+	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	        	<li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+	        	<li class="nav-item"><a href="teacher.html" class="nav-link">Staff</a></li>
+
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+				<li class="nav-item"><a href="careers.html" class="nav-link">Careers</a></li>
+				<li class="nav-item"><a href="downloads.html" class="nav-link">Downloads</a></li>
+
+				{% if user.is_authenticated%}
+				<li class="nav-item"><a href="accounts/logout" class="nav-link"> Logout</a></li>
+
+
+				<li class="nav-item"><a href="accounts/profile" class="nav-link" title=" my profile"><STRONG><i>Welcome!! {{user.first_name}}</i></STRONG></a></li>
+
+				{% else %}
+				<!--<li class="nav-item"><a href="register.html" class="nav-link">Register</a></li> -->
+				<li class ="nav-item"><a href="{% url 'signup' %}" class="nav-link">Signup</a></li>
+				<li class="nav-item"><a href="accounts/account_login" class="nav-link">Login</a></li>
+				{% endif %}
+	        </ul>
+
+
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Courses</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Courses <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                {% for coursef in coursess %}
+                <div class="col-md-6 mb-4">
+                    <p>
+                        <img src="{% static 'images/logo.jpg' %}" alt="Image" class="img-fluid">
+                    </p>
+
+                </div>
+                <div class="col-lg-5 ml-auto align-self-center">
+
+                        <h2 class="section-title-underline mb-5">
+                            <span><strong>Course Details:-</strong></span>
+                        </h2>
+                    <div>
+                    <table >
+                                      <tbody>
+                                      <tr>
+                                          <th>Course Name:</th>
+                                          <td>{{coursef.Course_Name}}</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Teacher:</th>
+                                          <td>{{coursef.Course_Teacher_Name}}</td>
+                                      </tr>
+
+                                      <tr>
+                                          <th>Number of Seats:</th>
+                                          <td>{{coursef.Seat}}</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Duration:</th>
+                                          <td>{{coursef.Course_Duration}} Months</td>
+                                      </tr>
+
+                                  </tbody></table>
+
+                          </div>
+
+
+
+                        <p><strong class="text-black d-block">Description:</strong>{{coursef.Course_Description}}</p>
+                        <p><strong class="text-black d-block">Fee:</strong>&#x20B9;{{coursef.Course_fee}} per Month
+                    <p>One time Registration Charge of &#x20B9;100 is applicable exclusive of Tuition fee </p>
+                        </p>
+
+
+
+{% endfor %}
+
+                        <p>
+                            <a href="{% url 'signup' %}" class="btn btn-primary rounded-0 btn-lg px-5">Enroll</a><br>
+                        </p>
+
+    
+                    </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+<br><br><div align="center"><h1 style="font-size:40px;color:black"><u>Steps to Enroll:-</u></h1></div>
+
+<section class="text-gray-700 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap">
+    <div class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
+      <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+      </div>
+      <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">1</div>
+      <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+        <div class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+          <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Signup as Student</h2>
+          <p class="leading-relaxed">Sign up as student after clicking enroll </p>
+        </div>
+      </div>
+    </div>
+    <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+      <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+      </div>
+      <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">2</div>
+      <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+        <div class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+        </div>
+        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+          <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Profile  Update</h2>
+          <p class="leading-relaxed">Login using Username and password and go to profile page and update your profile and do not forget to select your course</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+      <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+      </div>
+      <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">3</div>
+      <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+        <div class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="3"></circle>
+            <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
+          </svg>
+        </div>
+        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+          <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Payment</h2>
+          <p class="leading-relaxed">In the Profile section go to Payments tab fill your credentials  and pay Registration fee.Please note your Enrollment Number.Download your Invoice</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
+      <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+      </div>
+      <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">4</div>
+      <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+        <div class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+          <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Visit Institute</h2>
+          <p class="leading-relaxed">Visit Study Point institute with Invoice and Other Supported Documents and attend Classes as instructed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2">Have a Question ?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">Manpur Pehani,Near Durga Asthan,Gaya-823003,Bihar</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+91 9031 1194 48</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">studypoint.patwatoli@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+			<!--
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+              <h2 class="ftco-heading-2">Recent Blog</h2>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url({% static 'images/image_1.jpg' %});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> June 27, 2019</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block-21 mb-5 d-flex">
+                <a class="blog-img mr-4" style="background-image: url({% static 'images/image_2.jpg' %});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> June 27, 2019</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+			-->
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5 ml-md-4">
+             <h2 class="ftco-heading-2"> Official Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="https://mhrd.gov.in/" target="_blank"><span class="ion-ios-arrow-round-forward mr-2"></span>MHRD</a></li>
+                <li><a href="http://www.cbse.nic.in/" target="_blank"><span class="ion-ios-arrow-round-forward mr-2"></span>CBSE</a></li>
+                <li><a href="https://ndl.iitkgp.ac.in/" target="_blank"><span class="ion-ios-arrow-round-forward mr-2"></span>NDL</a></li>
+                <li><a href="https://ssc.nic.in/" target="_blank"><span class="ion-ios-arrow-round-forward mr-2"></span>SSC</a></li>
+                <li><a href="https://www.ibps.in/" target="_blank"><span class="ion-ios-arrow-round-forward mr-2"></span>IBPS</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2">Subscribe Us!</h2>
+              <form action="#" class="subscribe-form">
+                <div class="form-group">
+                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
+                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                </div>
+              </form>
+            </div>
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
+            	<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="https://www.twitter.com/"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+			  <p>Study Point Patwatoli</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'js/google-map.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

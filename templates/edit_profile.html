@@ -1,0 +1,519 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/jpg" href="{% static 'images/logo.jpg' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Student Profile</title>
+
+    <link rel="shortcut icon" href="{% static 'assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawsom-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+
+
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container-fluid overcover">
+        <div class="container profile-box">
+            <div class="top-cover">
+
+                <div class="covwe-inn">
+                    <div class="text-center" >
+
+
+						<a href="/index.html" class="txt2 hov1" >
+                            <p style="color:red;" >Home </p>
+						</a>
+					</div>
+
+
+
+                    <div class="row no-margin">
+
+                        <div class="col-md-3 img-c">
+                            <img src="{% static 'images/logo.jpg' %}"  height="150" width="150" style="margin:20px 0px" >
+                        </div>
+                        <div class="col-md-9 tit-det">
+
+
+                            <h2>Update  your profile</h2>
+
+                            <p>Kindly fill out this form as soon as possible. The data  should be accurate and correct.The Data is strictly confidential and will not be shared with anyone.
+                                Connect with your mentor if you wish to edit your Name or Email.
+</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<div class="container" >
+    <form action="/accounts/edit_profile_submit" method="POST"  enctype="multipart/form-data">
+         {% csrf_token %}
+
+
+
+
+        <h3 align="center">
+            <h6 align="center"><b>Basic Personal Information:-</b>
+            <p>------------------------------------------------------------------------------</p>
+
+                </h6>
+            <p> <b>NOTE:</b><u>Please leave the fields wherever not applicable</u> </p>
+              <div class="form-group row">
+    <label for="staticenrollment" class="col-sm-2 col-form-label">Enrollment Number</label>
+    <div class="col-sm-10">
+        <input type="number" readonly class="form-control-plaintext" id="staticenrollment" value="{{data.id}}" required >
+    </div>
+  </div>
+        <div class="form-group row">
+    <label for="staticname" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticname" value="{{data.first_name}} {{data.last_name}} " required>
+    </div>
+  </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{data.email}}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+      <label for="inputCourse" class="col-sm-2 col-form-label">Course Enrolled</label>
+            <div class="col-sm-10">
+      <select id="inputCourse" class="form-control" class="col-sm-2 col-form-label" name="course_enrolled" >
+        <option selected>Choose...</option>
+        <option value="SSC CGL">SSC CGL</option>
+    <option value="SSC CHSL">SSC CHSL</option>
+    <option value="IBPS">IBPS</option>
+          <option value="Spoken English">Spoken English</option>
+    <option value="X">X</option>
+    <option value="IX">IX</option>
+          <option value="VIII">VIII</option>
+    <option value="VII">VII</option>
+      </select>
+            </div>
+    </div>
+
+        <div class="form-group row">
+      <label for="inputGender" class="col-sm-2 col-form-label">Gender</label>
+            <div class="col-sm-10">
+      <select id="inputGender" class="form-control" class="col-sm-2 col-form-label" name="gender" >
+        <option selected>Choose...</option>
+        <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Others">Others</option>
+      </select>
+            </div>
+    </div>
+
+        <div class="form-group row">
+      <label for="inputBloodGroup" class="col-sm-2 col-form-label">Blood Group</label>
+            <div class="col-sm-10">
+      <select id="inputBloodGroup" class="form-control" class="col-sm-2 col-form-label" name="blood_group">
+        <option selected>Choose...</option>
+        <option value="A+">A+</option>
+    <option value="A-">A-</option>
+    <option value="B+">B+</option>
+          <option value="B-">B-</option>
+    <option value="AB+">AB+</option>
+    <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+    <option value="O-">O-</option>
+      </select>
+            </div>
+    </div>
+
+
+
+
+
+       <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">About Yourself</label>
+           <div class="col-sm-10">
+    <textarea class="form-control"  name="about_yourself" id="exampleFormControlTextarea1" rows="3" class="col-sm-2 col-form-label" placeholder=" Please Provide a short description about yourself ">{{data1.about_yourself}}</textarea>
+  </div>
+       </div>
+
+        <div class="form-group row" align="left">
+                            <label for="birth_date" style="color:black" class="col-sm-2 col-form-label">Date Of Birth :</label>
+            <div class="col-sm-10">
+                            <input type="date" name="date_of_birth" id="birth_date" value="{{data1.date_of_birth}}" required>
+                        </div>
+        </div>
+
+        <div class="form-group row" align="left">
+                            <label for="joining_date" style="color:black" class="col-sm-2 col-form-label">Date Of Joining :</label>
+            <div class="col-sm-10">
+                            <input type="date" name="date_of_joining" id="joining_date" value="{{data1.date_of_joining}}" required>
+                        </div>
+        </div>
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Aadhar Number</label>
+    <div class="col-sm-10">
+      <input type="number" pattern="[0-9]{12}" class="form-control" id="colFormLabel" value="{{data1.aadhar_number}}" placeholder="Enter your 12 digit Aadhar number" name="aadhar_number">
+    </div>
+  </div>
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label"> Mobile Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your  Contact Number" name="mobile_number" value="{{data1.mobile_number}}" >
+    </div>
+  </div>
+            <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label"> Emergency Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Please Enter emergency Number" name="emergency_number" value="{{data1.emergency_number}}">
+    </div>
+  </div>
+
+
+        <div class="form-group row ">
+    <label for="exampleFormControlFile11" class="col-sm-2 col-form-label">Upload Your Photo</label>
+            <div class="col-sm-10">
+    <input type="file" class="form-control-file" id="exampleFormControlFile11" name="profile_pic" >
+
+  </div>
+        </div>
+
+        <h6 align="center"><b>Parent's Information:-</b>
+            <p>------------------------------------------------------------------------------</p>
+                </h6>
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Father's Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Father's Name" name="father_name" value="{{data1.father_name}}">
+    </div>
+  </div>
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Father's Mobile Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Father's Contact Number" name="father_mobile_number" value="{{data1.father_mobile_number}}">
+    </div>
+  </div>
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Mother's Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Mother's Name" name="mother_name" value="{{data1.mother_name}}">
+    </div>
+  </div>
+
+
+        <h6 align="center"><b>Communication Information:-</b>
+            <p>------------------------------------------------------------------------------</p>
+                </h6>
+
+        <p>Permanent Address :-</p>
+
+        <div class="form-group">
+    <label for="p_address">Address</label>
+    <input type="text" class="form-control" id="p_address" placeholder="1234 Main St" name="p_address" value="{{data1.p_address}}">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="p_city">City</label>
+      <input type="text" class="form-control" id="p_city" name="p_city" value="{{data1.p_city}}">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="p_state">State</label>
+      <select id="p_state" class="form-control" name="p_state" data-model-name="p_state">
+        <option selected>Choose...</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+<option value="Daman and Diu">Daman and Diu</option>
+<option value="Delhi">Delhi</option>
+<option value="Lakshadweep">Lakshadweep</option>
+<option value="Puducherry">Puducherry</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Odisha">Odisha</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Telangana">Telangana</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="Uttarakhand">Uttarakhand</option>
+<option value="West Bengal">West Bengal</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="p_pincode">Pincode</label>
+      <input type="text" class="form-control" id="p_pincode" name="p_pincode" value="{{data1.p_pincode}}">
+    </div>
+  </div>
+        <div>
+<input type="checkbox" name="homepostalcheck" id="homepostalcheck"  onclick="setBillingAddress()">
+            <script>
+                function setBillingAddress(){
+  if ($("#homepostalcheck").is(":checked")) {
+    $('#p_address').val($('#c_address').val());
+    $('#p_city').val($('#c_city').val());
+    $('#p_state').val($('#c_state').val());
+    $('#p_pincode').val($('#c_pincode').val());
+
+
+
+}
+
+$('#homepostalcheck').click(function(){
+  setBillingAddress();
+})
+            </script>
+<em>Check this box if   Permanent Address and Correspondence Address are the same.</em>
+            </div>
+            <p>Correspondence Address :-</p>
+
+
+
+        <div class="form-group">
+    <label for="c_address">Address</label>
+    <input type="text" class="form-control" id="c_address" placeholder="1234 Main St" name="c_address" value="{{data1.c_address}}">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="c_city">City</label>
+      <input type="text" class="form-control" id="c_city" name="c_city" value="{{data1.c_city}}">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="c_state">State</label>
+      <select id="c_state" class="form-control" name="c_state">
+        <option selected>Choose...</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+<option value="Daman and Diu">Daman and Diu</option>
+<option value="Delhi">Delhi</option>
+<option value="Lakshadweep">Lakshadweep</option>
+<option value="Puducherry">Puducherry</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Odisha">Odisha</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Telangana">Telangana</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="Uttarakhand">Uttarakhand</option>
+<option value="West Bengal">West Bengal</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="c_pincode">Zip</label>
+      <input type="text" class="form-control" id="c_pincode" name="c_pincode" value="{{data1.c_pincode}}">
+    </div>
+  </div>
+
+        <h6 align="center"><b>Educational Information:-</b>
+            <p>-----------------------------------------------</p>
+                </h6>
+
+        <p>Graduation :-</p>
+
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">College/University Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your College/University Name" name="graduation_college" value="{{data1.graduation_college}}">
+    </div>
+  </div>
+          <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Course</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Completed Course" name="graduation_course" value="{{data1.graduation_course}}">
+    </div>
+  </div>
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Marks(in % or CGPA )</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Marks in Gradutaion" name="marks_graduation" value="{{data1.marks_graduation}}">
+    </div>
+  </div>
+
+        <div class="form-group row ">
+    <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">Upload Graduation Marksheet</label>
+            <div class="col-sm-10">
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="graduation_marksheet">
+
+  </div>
+        </div>
+
+
+
+<p>Senior Secondary(10+2) :-</p>
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">College/School Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your College/School Name" name="senior_sec_name" value="{{data1.senior_sec_name}}">
+    </div>
+  </div>
+          <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Stream</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Completed Course" name="senior_sec_stream" value="{{data1.senior_sec_stream}}">
+    </div>
+  </div>
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Marks(in % or CGPA )</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Marks in XII" name="marks_senior_sec" value="{{data1.marks_senior_sec}}">
+    </div>
+  </div>
+
+        <div class="form-group row ">
+    <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">Upload XIIth Marksheet</label>
+            <div class="col-sm-10">
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name= "senior_sec_marksheet" >
+
+  </div>
+        </div>
+
+
+
+
+        <p>Secondary(10/Matric) :-</p>
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">School Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your School Name" name="secondary_school_name" value="{{data1.secondary_school_name}}">
+    </div>
+  </div>
+
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Marks(in % or CGPA )</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Marks in Xth Board" name="marks_secondary" value="{{data1.marks_secondary}}">
+    </div>
+  </div>
+        <div class="form-group row ">
+    <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">Upload Xth Marksheet</label>
+            <div class="col-sm-10">
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="secondary_marksheet">
+
+  </div>
+        </div>
+
+
+<p> Current Education:-</p>
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label"> Current School Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your School Name" name="current_school_name" value="{{data1.current_school_name}}">
+    </div>
+  </div>
+
+
+        <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Marks(in % or CGPA )</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Marks of Previous Class" name="current_school_marks" value="{{data1.current_school_marks}}">
+    </div>
+  </div>
+
+        <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        All the information are true and valid as per knowledge
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div  >
+        <div  class="form-group" align="center">
+            <button class="btn btn-primary" type="submit" >Save Changes</button>
+
+        </div>
+
+    </form>
+    <div>
+        <p>Thanks for Sharing information</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+</body>
+
+<script>
+
+    function FillBilling(f) {
+  if(f.billingtoo.checked == true) {
+    f.p_address.value = f.c_address.value;
+    f.p_city.value = f.c_city.value;
+    f.p_state.value = f.c_state.value;
+    f.p_pincode.value = f.c_pincode.value;
+  }
+}
+</script>
+<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+</html>

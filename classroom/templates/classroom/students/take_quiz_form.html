@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block css %}
+<style type="text/css">
+
+ #clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
+/* https://jsbin.com/zequb/7/edit */
+input[type=radio]{
+  /* hide original inputs */
+
+  position:relative;
+  width:50px;
+}
+input[type=radio] + label{
+  cursor:pointer;
+}
+input[type=radio] + label:before{
+  width:25px;
+  height:25px;
+  content: " ";
+  display:inline-block;
+  border:10px solid #ccc;
+  border-radius:50%;
+  box-shadow: inset 0 -3px 6px #e4e4e4;
+  transition: 0.9s;
+}
+
+/* CHECKED */
+input[type=radio]:checked + label:before{
+  box-shadow: inset 0 0 0 5px #2196F3;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+function timeout()
+{
+var minute=Math.floor(timeleft/60);
+var second=timeleft%60;
+
+if(timeleft<=0)
+{
+clearTimeout(tm);
+document.getElementById("form1").submit();
+
+}
+else
+{document.getElementById("time").innerHTML=minute+":"+second;}
+timeleft--;
+ var tm=setTimeout(function(){timeout()},1000);
+
+}
+</script>
+
+<script type="text/javascript">
+var timeleft=60*2;
+</script>
+
+<p id="demo"></p>
+
+
+
+  <div class="progress mb-3">
+
+
+    <div class="progress-bar" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%"></div>
+  </div>
+  <h2><span class="badge badge-secondary">{{ answered_questions|add:"1" }}/{{total_questions}}</span></h2>
+  <div >
+  <h2 class="mb-3">{{ quiz.name }}</h2>
+  <p class="lead">{{ question.text|safe }}</p>
+  <form method="post" name="quiz" id="form1" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}<br>
+
+    <button type="submit" class="btn btn-primary" >Next →</button><br><br>
+
+    <p style="color:red">Note:-You can not go to previous question once clicked next. you will see Your Result once you attempt last question of the Test</p>
+
+  </form>
+
+    </div>
+
+{% endblock %}

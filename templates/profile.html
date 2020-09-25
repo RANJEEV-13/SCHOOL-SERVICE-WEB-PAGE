@@ -1,0 +1,486 @@
+{% load static%}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Profile</title>
+<link rel="icon" type="image/jpg" href="{% static 'images/logo.jpg' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Student Profile</title>
+
+    <link rel="shortcut icon" href="{% static 'assets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawsom-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+</head>
+<body>
+
+    <div class="container-fluid overcover">
+        <div class="container profile-box">
+            <div class="top-cover">
+
+                <div class="covwe-inn">
+                    <div class="text-center" >
+
+
+						<a href="/index.html" class="txt2 hov1" >
+                            <p style="color:red;" >Home </p>
+						</a>
+					</div>
+
+                            {% for d in data%}
+                    <div class="row no-margin">
+                            {% if d.profile_pic %}
+                        <div class="col-md-3 img-c" align="left">
+                            <img src="{{d.profile_pic.url}}" alt="Image not available" height="150" width="150" style="margin:20px 0px">
+                        </div>
+                        {% else  %}
+
+                        <div class="col-md-3 img-c" align="left">
+                            <img src="{% static 'images/default_profile_pic.png' %}" alt="Image not available" height="150" width="150" style="margin:20px 0px">
+                        </div>
+                        {% endif %}
+
+                        <div class="col-md-9 tit-det" align="center">
+
+                            {% for du in datauser%}
+                            <h2>{{du.first_name}}</h2>
+                            {% endfor %}
+                            <p>{{d.about_yourself}}</p>
+                            </div>
+                            <div class="col-md-9 tit-det" align="center">
+                            <p align="center">
+Thanks for Trusting Study Point. We are serving since 1995.
+</p>
+</div>
+
+
+
+
+
+                    </div>
+                    <div class="col-md-3 img-c" align="right">
+                            <img src="{% static 'images/logo.jpg' %}"  height="150" width="150" style="margin:20px 0px" >
+                        </div>
+                </div>
+            </div>
+            <div  align="right">
+                                  <ul class="btn-link">
+
+                                      <li>
+                                          <a href="edit_profile"><img src="{% static  'images/update_icon.png' %}">Update Profile</a>
+                                      </li>
+                                  </ul>
+                              </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Personal Info</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" id="resume-tab" data-toggle="tab" href="#resume" role="tab" aria-controls="resume" aria-selected="false">Academics</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="assessment-tab" data-toggle="tab" href="#assessment" role="tab" aria-controls="assessment" aria-selected="false">Assessment</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payments</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="row no-margin home-det">
+                      <div class="col-md-4 big-img">
+
+
+                          <h4 class="ltitle">Contact Details:</h4>
+
+                          <div class="refer-cov">
+
+                            <p><b>Permanent Address:</b> </p>
+                              <span><p>{{d.p_address}} {{d.p_city}}  {{d.p_state}} {{d.p_pincode}}</p></span>
+                        </div>
+
+                          <div class="refer-cov">
+
+                            <p><b>Correspondence Address:</b> </p>
+                              <span><p>{{d.c_address}} {{d.c_city}}  {{d.c_state}} {{d.c_pincode}}</p></span>
+                        </div>
+
+                        <div class="refer-cov">
+
+                            <p><b>Personal Contact No:</b> </p>
+                            <span>Phone : {{d.mobile_number}}</span>
+                        </div>
+                        <div class="refer-cov">
+
+                            <p> <b>Parent's Contact No:</b></p>
+                            <span>Phone :  {{d.father_mobile_number}}</span>
+                        </div>
+                          <div class="refer-cov">
+
+                            <p><b>Emergency Contact No:</b> </p>
+                            <span>Phone : {{d.emergency_number}}</span>
+                        </div>
+                          <div class="refer-cov">
+{% for du in datauser%}
+                            <p> <b>Email :</b></p>
+                            <span>Email :  {{du.email}}</span>
+                              {% endfor %}
+                        </div>
+
+                      </div>
+                      <div class="col-md-8 home-dat">
+                          <h2 class="rit-titl">Subject Completion Status</h2>
+                        <div class="profess-cover row no-margin">
+                            <div class="col-md-6">
+                                <div class=" prog-row row">
+                                    <div class="col-sm-6">
+                                        Trigonometry
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row prog-row">
+                                    <div class="col-sm-6">
+                                        Coordinate Geometry
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="row prog-row">
+                                    <div class="col-sm-6">
+                                        Biology
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row prog-row">
+                                    <div class="col-sm-6">
+                                        English
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="links">
+                          <div class="row ">
+                              <div class="col-xl-6 col-md-12">
+                                  <ul class="btn-link">
+
+                                      <li>
+                                          <a href="javascript:window.print();"><i class="fas fa-cloud-download-alt"></i> Download Profile</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div class="col-xl-6 col-md-12">
+                                  <ul class="social-link">
+                                      <li><i class="fab fa-facebook-f"></i></li>
+                                      <li><i class="fab fa-twitter"></i></li>
+
+                                      <li><i class="fab fa-youtube"></i></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="jumbo-address">
+                         <div class="row no-margin">
+                                  <div class="col-lg-6 no-padding">
+
+                                  <table class="addrss-list">
+                                      <tbody>
+                                      <tr>
+                                          <th>Enrollment No:</th>
+                                          <td>{{d.user_id}}</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Father's Name</th>
+                                          <td>{{d.father_name}}</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Gender</th>
+                                          <td>{{d.gender}}</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Date of birth</th>
+                                          <td>{{d.date_of_birth}}</td>
+                                      </tr>
+                                  </tbody></table>
+
+                          </div>
+                          <div class="col-lg-6 no-padding">
+                               <table class="addrss-list">
+                                      <tbody><tr>
+                                          <th>Date Of Joining</th>
+                                          <td>{{d.date_of_joining}}</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Course Enrolled</th>
+                                          <td>{{d.course_enrolled}}</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Aadhaar No</th>
+                                          <td>{{d.aadhar_number}}</td>
+                                      </tr>
+                                      <tr>
+                                          <th>Blood Group</th>
+                                          <td>{{d.blood_group}}</td>
+                                      </tr>
+                                  </tbody></table>
+                          </div>
+                         </div>
+
+                      </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="tab-pane fade exp-cover" id="resume" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="sec-title">
+                                        <h2>Education Details</h2>
+                                  </div>
+                                   <div class="service no-margin row">
+                                          <div class="col-sm-3 resume-dat serv-logo">
+                                              <h6>Year</h6>
+                                            <p>Master Degree</p>
+                                          </div>
+                                          <div class="col-sm-9 rgbf">
+                                              <h5>College/University</h5>
+                                              <p>Course:</p>
+                                              <p>CGPA/%:</p>
+                                          </div>
+                                      </div>
+                                      <div class="service no-margin row">
+                                          <div class="col-sm-3 resume-dat serv-logo">
+                                              <h6>Year</h6>
+                                            <p>Bacholers Degree</p>
+                                          </div>
+                                          <div class="col-sm-9 rgbf">
+                                              <h5>{{d.graduation_college}}</h5>
+                                              <p>Course:{{d.graduation_course}}</p>
+                                              <p>CGPA/%:{{d.marks_graduation}}</p>
+                                          </div>
+                                      </div>
+                                      <div class="service no-margin row">
+                                          <div class="col-sm-3 resume-dat serv-logo">
+                                              <h6>Year</h6>
+                                            <p>Senior Secondary</p>
+                                          </div>
+                                          <div class="col-sm-9 rgbf">
+                                              <h5>{{d.senior_sec_name}}</h5>
+                                              <p>Stream :{{d.senior_sec_stream}}</p>
+                                              <p>Marks/Percentage:{{d.marks_senior_sec}}</p>
+                                          </div>
+                                      </div>
+                                      <div class="service no-margin row">
+                                          <div class="col-sm-3 resume-dat serv-logo">
+                                              <h6>Year</h6>
+                                            <p>Secondary Education</p>
+                                          </div>
+                                          <div class="col-sm-9 rgbf">
+                                              <h5>{{d.secondary_school_name}}</h5>
+                                              <p>Marks/Percentage:{{d.marks_secondary}}</p>
+                                          </div>
+                                      </div>
+
+                  <div class="service no-margin row">
+                                          <div class="col-sm-3 resume-dat serv-logo">
+                                              <h6>Year</h6>
+                                            <p>Current School/Institution</p>
+                                          </div>
+                                          <div class="col-sm-9 rgbf">
+                                              <h5>{{d.current_school_name}}</h5>
+                                              <p>Marks/Percentage:{{d.current_school_marks}}</p>
+                                          </div>
+                                      </div>
+              </div>
+              <div class="tab-pane fade gallcoo" id="assessment" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="row no-margin gallery">
+                      <div><p><h2>You have not any Scheduled Assessment!!!</h2>
+                          </p>
+                          <p>for Online Assessment and  Class Tests, Download  Study Point App from Google Play Store</p>
+                          <a href="https://play.google.com/store/apps/details?id=co.thanos.fticg" ><img src="{% static  'images/ps.png' %}"> </a>
+                          <p><i style="color:red"> click on icon</i> to download app</p>
+
+                          <div>
+                          <p>To take test on the website click on the  below link</p>
+                          {% if user.is_superuser %}
+<a href="{% url 'teachers:quiz_change_list' %}" class="nav-link" target="_blank">Test Portal</a>
+						{% elif user.is_staff %}
+						<a href="{% url 'students:quiz_list' %}" class="nav-link" target="_blank">Test Portal</a>
+						{% else%}
+						<a href="home.html" class="nav-link" target="_blank" style="color:red">Test Portal</a>
+						{% endif %}
+                      </div>
+
+                      </div>
+
+
+
+                                      </div>
+              </div>
+              <div class="tab-pane fade payment-tab" id="payment" role="tabpanel" aria-labelledby="contact-tab">
+                  <form action="Checkout" method="POST">
+                      {% csrf_token%}
+                  <div   align="center">
+                      <h3>Enter your details for the Payment !</h3>
+<div>
+                                                          <p> Enrollment No:{{d.user_id}}</p>
+                                                      </div>
+                      <div class="container">
+
+                                          <div class="col-md-7">
+
+                                              <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Full Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="colFormLabel" placeholder="Enter your Full  Name" name="full_name" value="{{data1.father_name}}"  title="4 to 8 lowercase letters" required>
+    </div>
+  </div>
+                                              <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Mobile Number</label>
+    <div class="col-sm-10">
+      <input type="tel" class="form-control" id="colFormLabel" placeholder="Enter Mobile Number" pattern="[0-9]{10}" name="mobile_number" value="{{data1.father_mobile_number}}" required>
+    </div>
+  </div>
+                                                                              <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="colFormLabel" placeholder="Enter email" name="email" value="{{data1.father_mobile_number}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
+    </div>
+  </div>
+
+                                              <div class="form-group row">
+      <label for="inputCourse" class="col-sm-2 col-form-label">Course/Class</label>
+            <div class="col-sm-10">
+      <select id="inputCourse" class="form-control" class="col-sm-2 col-form-label" name="course_enrolled"  required>
+        <option selected>Choose...</option>
+        <option value="SSC CGL">SSC CGL</option>
+    <option value="SSC CHSL">SSC CHSL</option>
+    <option value="IBPS">IBPS</option>
+          <option value="Spoken English">Spoken English</option>
+    <option value="X">X</option>
+    <option value="IX">IX</option>
+          <option value="VIII">VIII</option>
+    <option value="VII">VII</option>
+          <option value="VI">VI</option>
+    <option value="V">V</option>
+          <option value="IV">IV</option>
+    <option value="III">III</option>
+          <option value="II">II</option>
+    <option value="I">I</option>
+          <option value="Registration Fee">Registration Fee</option>
+      </select>
+            </div>
+    </div>
+
+
+                                              <div class="form-group row" align="left">
+                            <label for="payment_month" style="color:black" class="col-sm-2 col-form-label">Month</label>
+            <div class="col-sm-10">
+                            <input type="month" name="payment_month" id="payment_month" value="{{data1.date_of_birth}}" required>
+                <span class="help-block">(Select month you to want to pay for)</span>
+
+                        </div>
+
+        </div>
+
+                                              <div class="form-group row">
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Amount</label>
+    <div class="col-sm-10">
+      <input type="number"  class="form-control" id="colFormLabel" value="{{data1.aadhar_number}}" placeholder="Enter Fee for the selected Month" name="amount" min="1" max="10000" required>
+    </div>
+  </div>
+
+
+                                              <div class="col-sm-6" align="center">
+
+                                                      <button  onclick="return confirm('are you sure want to make payment??? ')" class="btn btn-sm btn-primary">Proceed to pay</button>
+<div><p>On clicking Proceed to Pay.. Page will redirect to payment gateway portal </p></div>
+
+                                                  </div>
+
+                                              <div>
+                                                  <p>------------------------------------------------------------------------------------------------------------------------------</p>
+                                              </div>
+
+
+
+
+
+
+
+                                          </div>
+                  </div>
+                                      </div>
+
+
+                  </form>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</body>
+<script type="text/javascript">
+var beforePrint = function() {
+};
+
+
+
+if (window.matchMedia) {
+	var mediaQueryList = window.matchMedia('print');
+	mediaQueryList.addListener(function(mql) {
+		if (mql.matches) {
+			beforePrint();
+		} else {
+			afterPrint();
+		}
+	});
+}
+window.onbeforeprint = beforePrint;
+window.onafterprint = afterPrint;
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73809851-1', 'auto');
+  ga('send', 'pageview');
+
+
+</script>
+
+<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+</html>
